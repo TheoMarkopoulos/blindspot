@@ -1,0 +1,50 @@
+name: BlindSpot Evaluation
+
+on:
+  workflow_dispatch:
+    inputs:
+      model:
+        description: "Model to evaluate (litellm format)"
+        required: true
+        default: "openai/gpt-4o"
+      judge_model:
+        description: "Judge model"
+        required: false
+        default: "openai/gpt-4o-mini"
+      concurrency:
+        description: "Max parallel requests"
+        required: false
+        default: "5"
+
+jobs:
+  evaluate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install BlindSpot
+        run: pip install -e .
+
+      - name: Run evaluation
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          blindspot run \
+            --model "${{ github.event.inputs.model }}" \
+            --judge-model "${{ github.event.inputs.judge_model }}" \
+            --concurrency ${{ github.event.inputs.concurrency }} \
+            --output blindspot_results \
+            --format both
+
+      - name: Upload results
+        uses: actions/upload-artifact@v4
+        with:
+          name: blindspot-results-${{ github.run_id }}
+          path: blindspot_results/
