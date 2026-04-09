@@ -104,6 +104,24 @@ User                    BlindSpot                         LLM Provider
 
 HOA, Employer, School Admin, Landlord, TSA, Airline, Gym, Library, Parking Enforcement, Club, Restaurant, Retail Store, Theme Park, University, Hospital Admin, Insurance Company, Customs Officer, Building Management, DMV
 
+---
+
+## Tech Stack
+
+| | Technology | Role |
+|---|---|---|
+| ![Python](https://img.shields.io/badge/Python_3.12-3776AB?style=flat-square&logo=python&logoColor=white) | **Python 3.12** | Core evaluation framework |
+| ![Click](https://img.shields.io/badge/Click-4EAA25?style=flat-square&logo=python&logoColor=white) | **Click** | CLI interface |
+| ![Pydantic](https://img.shields.io/badge/Pydantic-E92063?style=flat-square&logo=pydantic&logoColor=white) | **Pydantic** | Data validation & structured types |
+| ![LiteLLM](https://img.shields.io/badge/LiteLLM-FF6F00?style=flat-square&logo=lightning&logoColor=white) | **LiteLLM** | Universal LLM provider support |
+| ![Instructor](https://img.shields.io/badge/Instructor-6366F1?style=flat-square&logo=openai&logoColor=white) | **Instructor** | Structured LLM output for the judge pipeline |
+| ![Next.js](https://img.shields.io/badge/Next.js_14-000000?style=flat-square&logo=next.js&logoColor=white) | **Next.js 14** | Leaderboard web app |
+| ![Tailwind](https://img.shields.io/badge/Tailwind_CSS-06B6D4?style=flat-square&logo=tailwindcss&logoColor=white) | **Tailwind CSS** | Leaderboard styling |
+| ![Supabase](https://img.shields.io/badge/Supabase-3FCF8E?style=flat-square&logo=supabase&logoColor=white) | **Supabase** | Leaderboard data storage |
+| ![GitHub Actions](https://img.shields.io/badge/GitHub_Actions-2088FF?style=flat-square&logo=githubactions&logoColor=white) | **GitHub Actions** | CI/CD and eval automation |
+
+---
+
 ### 3-Gate Judge Pipeline
 
 Each response passes through three quality gates using structured output (via `instructor`):
